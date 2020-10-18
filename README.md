@@ -1,3 +1,3 @@
-# depop refresher
+# 🔄 depop refresher 🔄
 
-![depop](assets/icon.png 'depop')
+![depop](assets/icon.png 'depop' =90x90)
