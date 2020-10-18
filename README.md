@@ -1,3 +1,3 @@
 # depop refresher
 
-![depop](assets/logo.png 'depop')
+![depop](assets/icon.png 'depop')
