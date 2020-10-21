@@ -1,16 +1,28 @@
 {
   "private": true,
   "name": "depop-refresher",
-  "version": "1.0.0",
-  "description": "A template for kick starting a Cloudflare Workers project",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "Automate depop product refreshes",
+  "homepage": "https://github.com/duncanlettuce/depop-refresher",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write '**/*.{js,css,json,md}'"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Donald Geddes <hi@donaldgeddes.ca>",
   "license": "MIT",
   "devDependencies": {
-    "prettier": "^1.18.2"
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.13.0",
+    "eslint-plugin-import": "^2.22.1",
+    "prettier": "^2.1.2"
+  },
+  "dependencies": {
+    "axios": "^0.20.0",
+    "axios-middleware": "^0.3.1",
+    "bottleneck": "^2.19.5",
+    "currency-formatter": "^1.5.6",
+    "number-to-words": "^1.2.4"
   }
 }

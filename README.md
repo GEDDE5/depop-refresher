@@ -1,15 +1,7 @@
-# 👷 `worker-template` Hello World
-
-A template for kick starting a Cloudflare worker project.
-
-[`index.js`](https://github.com/cloudflare/worker-template/blob/master/index.js) is the content of the Workers script.
-
-#### Wrangler
-
-To generate using [wrangler](https://github.com/cloudflare/wrangler)
-
-```
-wrangler generate projectname https://github.com/cloudflare/worker-template
-```
-
-Further documentation for Wrangler can be found [here](https://developers.cloudflare.com/workers/tooling/wrangler).
+<div style="display: flex; align-items: center;">
+  <p align="center">
+    <span style="font-size: 2rem;">🔄</span>
+    <img src="https://github.com/duncanlettuce/depop-refresher/raw/dev/assets/icon.png" alt="depop" width="90" />
+    <span style="font-size: 2rem;">🔄</span>
+  </p>
+</div>
