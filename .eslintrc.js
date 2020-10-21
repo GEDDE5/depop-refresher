@@ -4,6 +4,7 @@ module.exports = {
     node: true,
   },
   extends: ['airbnb-base', 'prettier'],
+  parser: 'babel-eslint',
   rules: {
     'arrow-parens': 'off',
     camelcase: 'off',
@@ -20,6 +21,7 @@ module.exports = {
     semi: 'off',
   },
   settings: {
+    'import/extensions': ['.js', '.json'],
     'import/resolver': {
       node: {
         paths: ['.'],
