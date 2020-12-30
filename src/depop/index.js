@@ -8,7 +8,9 @@ const log = require('../log/error')
 module.exports = class Depop {
   constructor(user, products) {
     this.user = user
-    this.products = products
+    this.products = products.filter(
+      product => product.status !== 'DELETED_ONSALE'
+    )
     this.limiter = new Bottleneck({
       maxConcurrent: 3, // Or max concurrent refreshes
       minTime: 100, // Or refresh interval
