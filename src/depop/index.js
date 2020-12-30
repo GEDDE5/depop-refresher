@@ -90,7 +90,6 @@ module.exports = class Depop {
   refreshAll() {
     const availableProducts = this.products
       .filter(product => product.sold === false)
-      .slice(0, 10)
       .reverse()
     return this.refreshSelected(availableProducts)
   }
