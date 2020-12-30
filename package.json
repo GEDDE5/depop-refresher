@@ -1,5 +1,4 @@
 {
-  "private": true,
   "name": "depop-refresher",
   "version": "0.0.1",
   "description": "Automate depop product refreshes",
