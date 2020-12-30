@@ -1,6 +1,6 @@
 module.exports = {
   env: {
-    browser: false,
+    browser: true,
     node: true,
   },
   extends: ['airbnb-base', 'prettier'],
@@ -12,6 +12,7 @@ module.exports = {
     'import/newline-after-import': 'off',
     'no-bitwise': 'off',
     'no-console': 'off',
+    'no-restricted-globals': 'off',
     'no-underscore-dangle': 'off',
     'no-unused-expressions': [
       'error',
