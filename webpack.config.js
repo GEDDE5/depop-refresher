@@ -1,4 +1,1 @@
-module.exports = {
-  target: 'webworker',
-  node: { fs: 'empty' },
-}
+module.exports = { target: 'webworker', entry: './src/index.js' }
