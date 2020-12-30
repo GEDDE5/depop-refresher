@@ -1,5 +1,3 @@
-/* globals WEBHOOK_URL */
-
 const Webhook = require('./Webhook')
 const template = require('./template')
 
