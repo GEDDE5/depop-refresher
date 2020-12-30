@@ -1,3 +1,7 @@
+const { create } = require('axios')
+const headers = { 'content-type': 'application/json' }
+const instance = create({ headers })
+
 class Webhook {
   constructor(url) {
     this.url = url
@@ -18,14 +22,7 @@ class Webhook {
       ...(this._avatarUrl && { avatar_url: this._avatarUrl }),
       embeds: [_embed],
     }
-    const init = {
-      method: 'POST',
-      body: JSON.stringify(body),
-      headers: {
-        'content-type': 'application/json',
-      },
-    }
-    return fetch(this.url, init)
+    return instance.post(this.url, body)
   }
 }
 

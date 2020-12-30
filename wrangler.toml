@@ -1,8 +1,0 @@
-name = "depop-refresher"
-type = "webpack"
-workers_dev = true
-webpack_config = "webpack.config.js"
-account_id = "db0b4bcd88aeb587949c7d9498261af1"
-
-[triggers]
-crons = ["*/10 * * * *"]

@@ -1,10 +1,4 @@
-const { handleRequest } = require('./handleRequest')
+require('dotenv').config()
 const { handleScheduled } = require('./handleScheduled')
 
-addEventListener('scheduled', event => {
-  event.waitUntil(handleScheduled(event))
-})
-
-addEventListener('fetch', async event => {
-  event.respondWith(handleRequest(event))
-})
+module.exports = handleScheduled

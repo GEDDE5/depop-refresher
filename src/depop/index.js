@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const Bottleneck = require('bottleneck')
 
 const api = require('./api')
@@ -14,16 +16,16 @@ module.exports = class Depop {
   }
 
   static async login(username = '', password = '', _token = '') {
-    api.config.baseURL = 'https://webapi.depop.com/api/auth/v1'
+    api.defaults.baseURL = 'https://webapi.depop.com/api/auth/v1'
 
     if (_token) {
-      api.config.token = _token
+      api.defaults.token = _token
     } else {
       // Get token and place it in API config (hook will auto set it)
       await api
-        .post('login', { body: { username, password } })
+        .post('login', { username, password })
         .then(({ token }) => {
-          api.config.token = token
+          api.defaults.token = token
         })
         .catch(log('login'))
     }
@@ -38,7 +40,7 @@ module.exports = class Depop {
   }
 
   static async populateProducts(username, { limit = 200 } = {}) {
-    api.config.baseURL = 'https://webapi.depop.com/api/v1'
+    api.defaults.baseURL = 'https://webapi.depop.com/api/v1'
 
     let path = `/shop/${username}`
     const { id } = await api.get(path).catch(log(path))
@@ -77,7 +79,7 @@ module.exports = class Depop {
         ...rest,
       }
       path = `/products/${slug}`
-      return api.put(path, { body }).catch(log(path))
+      return api.put(path, { ...body }).catch(log(path))
     }
 
     return Promise.all(products.map(this.limiter.wrap(refresh))).catch(
@@ -88,6 +90,7 @@ module.exports = class Depop {
   refreshAll() {
     const availableProducts = this.products
       .filter(product => product.sold === false)
+      .slice(0, 10)
       .reverse()
     return this.refreshSelected(availableProducts)
   }
