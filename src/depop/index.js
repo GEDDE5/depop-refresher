@@ -82,7 +82,6 @@ module.exports = class Depop {
         id,
         slug: _,
         seller,
-        sizes,
         videos,
         likeCount,
         brandId = null,
@@ -95,6 +94,7 @@ module.exports = class Depop {
           nationalShippingCost,
         },
         status,
+        sizes,
         age,
         colour,
         source,
@@ -114,15 +114,16 @@ module.exports = class Depop {
         source: source ? source.map(toId) : null,
         style: style ? style.map(toId) : null,
         condition: conditionId,
+        variants: sizes.reduce(
+          (acc, { id, quantity }) => ({ ...acc, [id]: quantity }),
+          {}
+        ),
         priceAmount,
         priceCurrency,
         nationalShippingCost,
         ...rest,
       }
-      // console.log(body)
       path = `/products/${slug}`
-      // console.log(path)
-      // console.log(JSON.stringify(body))
       api.defaults.baseURL = 'https://webapi.depop.com/api/v1'
       return api.put(path, { ...body }).catch(log(path))
     }
@@ -135,6 +136,7 @@ module.exports = class Depop {
   refreshAll() {
     const availableProducts = this.products
       .filter(product => product.sold === false)
+      .slice(0, 1)
       .reverse()
 
     return this.refreshSelected(availableProducts)
