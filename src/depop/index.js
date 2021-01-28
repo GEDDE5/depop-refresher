@@ -69,18 +69,61 @@ module.exports = class Depop {
 
   refreshSelected(products = []) {
     async function refresh({ slug }) {
-      let path = `/products/${slug}`
+      api.defaults.baseURL = 'https://webapi.depop.com/api/v2'
+      let path = `/product/${slug}`
       const res = await api.get(path).catch(log(path))
       if (res.code) {
         console.error(`Error ${res.code}: ${slug} - ${res.message}`)
         return Promise.resolve(false)
       }
-      const { id, slug: _, status, pictures, ...rest } = res
+      // console.log(res.pictures)
+      const {
+        // Don't need anymore
+        id,
+        slug: _,
+        seller,
+        sizes,
+        videos,
+        likeCount,
+        brandId = null,
+        dateUpdated,
+
+        // Require transforming
+        price: {
+          priceAmount,
+          currencyName: priceCurrency,
+          nationalShippingCost,
+        },
+        status,
+        age,
+        colour,
+        source,
+        style,
+        condition: { id: conditionId = null } = {},
+        pictures,
+
+        ...rest
+      } = res
+
+      const toId = ({ id }) => id
       const body = {
-        pictureIds: pictures.map(({ id: pictureId }) => pictureId),
+        pictureIds: pictures.map(([{ id: pictureId }]) => pictureId),
+        brandId,
+        age: age ? age.map(toId) : null,
+        colour: colour ? colour.map(toId) : null,
+        source: source ? source.map(toId) : null,
+        style: style ? style.map(toId) : null,
+        condition: conditionId,
+        priceAmount,
+        priceCurrency,
+        nationalShippingCost,
         ...rest,
       }
+      // console.log(body)
       path = `/products/${slug}`
+      // console.log(path)
+      // console.log(JSON.stringify(body))
+      api.defaults.baseURL = 'https://webapi.depop.com/api/v1'
       return api.put(path, { ...body }).catch(log(path))
     }
 
@@ -93,6 +136,7 @@ module.exports = class Depop {
     const availableProducts = this.products
       .filter(product => product.sold === false)
       .reverse()
+
     return this.refreshSelected(availableProducts)
   }
 }

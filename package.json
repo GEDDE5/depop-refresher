@@ -13,13 +13,13 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^11.0.1",
+    "@rollup/plugin-node-resolve": "^11.1.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.2.0",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-config-prettier": "^6.13.0",
+    "eslint": "^7.18.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-import": "^2.22.1",
-    "prettier": "^2.1.2"
+    "prettier": "^2.2.1"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -28,6 +28,6 @@
     "dotenv": "^8.2.0",
     "node-cron": "^2.0.3",
     "number-to-words": "^1.2.4",
-    "rollup": "^2.35.1"
+    "rollup": "^2.38.0"
   }
 }
