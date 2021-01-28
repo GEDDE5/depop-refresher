@@ -105,6 +105,7 @@ module.exports = class Depop {
         ...rest
       } = res
 
+      // eslint-disable-next-line no-shadow
       const toId = ({ id }) => id
       const body = {
         pictureIds: pictures.map(([{ id: pictureId }]) => pictureId),
@@ -115,6 +116,7 @@ module.exports = class Depop {
         style: style ? style.map(toId) : null,
         condition: conditionId,
         variants: sizes.reduce(
+          // eslint-disable-next-line no-shadow
           (acc, { id, quantity }) => ({ ...acc, [id]: quantity }),
           {}
         ),
@@ -136,7 +138,6 @@ module.exports = class Depop {
   refreshAll() {
     const availableProducts = this.products
       .filter(product => product.sold === false)
-      .slice(0, 1)
       .reverse()
 
     return this.refreshSelected(availableProducts)
