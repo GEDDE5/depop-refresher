@@ -115,11 +115,13 @@ module.exports = class Depop {
         source: source ? source.map(toId) : null,
         style: style ? style.map(toId) : null,
         condition: conditionId,
-        variants: sizes.reduce(
-          // eslint-disable-next-line no-shadow
-          (acc, { id, quantity }) => ({ ...acc, [id]: quantity }),
-          {}
-        ),
+        variants: sizes
+          ? sizes.reduce(
+              // eslint-disable-next-line no-shadow
+              (acc, { id, quantity }) => ({ ...acc, [id]: quantity }),
+              {}
+            )
+          : null,
         priceAmount,
         priceCurrency,
         nationalShippingCost,
