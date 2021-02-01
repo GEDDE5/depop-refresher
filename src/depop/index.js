@@ -12,7 +12,7 @@ module.exports = class Depop {
       product => product.status !== 'DELETED_ONSALE'
     )
     this.limiter = new Bottleneck({
-      maxConcurrent: 3, // Or max concurrent refreshes
+      maxConcurrent: 1, // Or max concurrent refreshes
       minTime: 100, // Or refresh interval
     })
   }
