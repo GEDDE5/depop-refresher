@@ -4,8 +4,7 @@ const notify = require('./discord')
 async function handleScheduled() {
   const store = await Depop.login(
     process.env.DEPOP_USER,
-    process.env.DEPOP_PASS,
-    '4eae754da873a66667c0f748f129e68ed252f073'
+    process.env.DEPOP_PASS
   )
   const result = await store.refreshAll()
   const numSuccessfullyRefreshed = result.filter(product => Boolean(product))
