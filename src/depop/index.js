@@ -18,7 +18,7 @@ module.exports = class Depop {
   }
 
   static async login(username = '', password = '', _token = '') {
-    api.defaults.baseURL = 'https://webapi.depop.com/api/auth/v1'
+    api.defaults.baseURL = 'https://webapi.depop.com/api/v1/auth'
 
     if (_token) {
       api.defaults.token = _token
@@ -33,7 +33,7 @@ module.exports = class Depop {
     }
 
     // Fetch user details
-    const user = await api.get('me')
+    const user = await api.get('identify')
 
     // Populate products
     const products = await this.populateProducts(username)
