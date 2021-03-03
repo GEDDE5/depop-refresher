@@ -1,6 +1,6 @@
 {
   "name": "depop-refresher",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Automate depop product refreshes",
   "homepage": "https://github.com/duncanlettuce/depop-refresher",
   "main": "src/index.js",
