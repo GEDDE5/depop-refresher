@@ -1,7 +1,11 @@
 const axios = require('axios')
 const api = axios.create({
   baseURL: 'http://asdf.com',
-  headers: { 'content-type': 'application/json' },
+  headers: {
+    'content-type': 'application/json',
+    'User-Agent':
+      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:87.0) Gecko/20100101 Firefox/87.0',
+  },
   validateStatus: status => status >= 200 && status < 500,
 })
 
@@ -20,32 +24,3 @@ api.interceptors.request.use(setToken)
 api.interceptors.response.use(({ data }) => data)
 
 module.exports = api
-
-// const Fetch = require('../fetch')
-
-// const api = new Fetch()
-
-// const stringifyBodyOnPost = config => {
-//   if (config.body) {
-//     return {
-//       ...config,
-//       body: JSON.stringify(config.body),
-//     }
-//   }
-//   return config
-// }
-// const setToken = config => {
-//   if (config.token) {
-//     const { token, ...rest } = config
-//     config.headers.append('authorization', `Bearer ${token}`)
-//     return rest
-//   }
-
-//   return config
-// }
-
-// api.middlewares.beforeRequest.use(setToken, stringifyBodyOnPost)
-// api.middlewares.afterResponse.use(response => response.json())
-// api.config.headers.append('content-type', 'application/json')
-
-// module.exports = api

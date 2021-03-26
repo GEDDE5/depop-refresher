@@ -76,7 +76,6 @@ module.exports = class Depop {
         console.error(`Error ${res.code}: ${slug} - ${res.message}`)
         return Promise.resolve(false)
       }
-      // console.log(res.pictures)
       const {
         // Don't need anymore
         id,
